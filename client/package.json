@@ -1,0 +1,54 @@
+{
+  "name": "mapbox-proto",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "jwt-decode": "^2.2.0",
+    "mapbox-gl": "^0.49.0-beta.1",
+    "mapbox-gl-vue": "^1.9.0",
+    "minimist": "^1.2.0",
+    "pbf": "^3.1.0",
+    "serverless-finch": "^2.3.2",
+    "vue": "^2.5.17",
+    "vue-resource": "^1.5.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0",
+    "@vue/cli-plugin-eslint": "^3.0.0",
+    "@vue/cli-service": "^3.0.0",
+    "serverless-client-s3": "^2.0.0",
+    "serverless-offline": "^3.25.11",
+    "vue-template-compiler": "^2.5.17",
+    "webpack-cli": "^3.1.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

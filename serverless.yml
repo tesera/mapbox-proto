@@ -1,0 +1,51 @@
+service: hris-viewer
+provider:
+  name: aws
+  runtime: nodejs6.10
+  profile: hris
+  region: us-west-2
+  stage: ${opt:stage, 'dev'}
+  environment: ${file(./config/config.${self:provider.stage}.json)}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "es:*"
+      Resource:
+        - "*"
+
+plugins:
+  - serverless-finch
+  - serverless-offline
+
+custom:
+  client:
+    bucketName: ${file(./config/config.${self:provider.stage}.json):BUCKET}
+    errorDocument: index.html
+
+package:
+  individually: true
+  exclude:
+    - ".*/**"
+
+functions:
+
+  features:
+    package:
+      include:
+        - api/**
+    handler: api/handlers.features
+    events:
+      - http:
+          path: /features/{x}/{y}/{z}
+          method: post
+          cors: true
+  users:
+    package:
+      include:
+        - api/**
+    handler: api/handlers.user
+    events:
+      - http:
+          path: /user
+          method: get
+          cors: true
