@@ -36,16 +36,6 @@ functions:
     handler: api/handlers.features
     events:
       - http:
-          path: /features/{x}/{y}/{z}
-          method: post
-          cors: true
-  users:
-    package:
-      include:
-        - api/**
-    handler: api/handlers.user
-    events:
-      - http:
-          path: /user
+          path: /features/{z}/{x}/{y}
           method: get
           cors: true
