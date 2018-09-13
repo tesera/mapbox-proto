@@ -4,18 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "offline": "sls offline start --dontPrintOutput --stage local",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "offline": "sls offline start --dontPrintOutput --stage local"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@mapbox/sphericalmercator": "^1.1.0",
-    "jwt-decode": "^2.2.0",
-    "minimist": "^1.2.0",
-    "serverless-finch": "^2.3.2"
+    "bodybuilder": "^2.2.15",
+    "elasticsearch": "^15.1.1",
+    "bodybuilder": "^2.2.15",
+    "elasticsearch": "^15.1.1",
+    "http-aws-es": "^6.0.0"
   },
   "devDependencies": {
+    "serverless-finch": "^2.3.2",
     "serverless-client-s3": "^2.0.0",
     "serverless-offline": "^3.25.11"
   }
