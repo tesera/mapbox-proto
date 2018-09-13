@@ -2,6 +2,8 @@
 const SphericalMercator = require('@mapbox/sphericalmercator')
 const merc = new SphericalMercator({ size: 256 })
 const Feature = require('./models/Feature')
+const geobuf = require('geobuf')
+const Pbf = require('pbf')
 
 function boundsToPolygon(bounds) {
   let poly = []
@@ -18,7 +20,7 @@ module.exports = (event, context, callback) => {
   let bounds = merc.bbox(tile.x, tile.y, tile.z)
 
   options = {
-    index: `local-spatial`,
+    index: `dev-spatial`,
     project: 'knifecreek',
     recordType: 'vri',
     bounds: boundsToPolygon(bounds),
@@ -27,15 +29,20 @@ module.exports = (event, context, callback) => {
 
   let request = new Feature(options)
   request.get().then((data) => {
-    console.log(`Returned ${data.hits.hits.length} features from local-spatial for tile `)
+    console.log(`Returned ${data.hits.hits.length} features from dev-spatial for tile `)
+
+    let firstFeature = data.hits.hits[0]._source
+    let pbf = geobuf.encode(firstFeature, new Pbf())
+
     callback(null, {
       statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin' : '*',
         'Access-Control-Allow-Credentials' : true,
-        'content-type': 'application/json'
+        'content-type': 'application/octet-stream'
       },
-      body: JSON.stringify({data})
+      body: Buffer.from(pbf).toString('base64'),
+      isBase64Encoded: true
     })
   })
 

@@ -12,9 +12,10 @@
     "@mapbox/sphericalmercator": "^1.1.0",
     "bodybuilder": "^2.2.15",
     "elasticsearch": "^15.1.1",
-    "bodybuilder": "^2.2.15",
-    "elasticsearch": "^15.1.1",
-    "http-aws-es": "^6.0.0"
+    "geobuf": "^3.0.1",
+    "http-aws-es": "^6.0.0",
+    "pbf": "^3.1.0",
+    "serverless-apigw-binary": "^0.4.4"
   },
   "devDependencies": {
     "serverless-finch": "^2.3.2",

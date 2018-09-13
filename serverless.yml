@@ -1,11 +1,13 @@
-service: hris-viewer
+service: hris-viewer-vector-prototype
 provider:
   name: aws
   runtime: nodejs6.10
   profile: hris
   region: us-west-2
-  stage: ${opt:stage, 'dev'}
-  environment: ${file(./config/config.${self:provider.stage}.json)}
+  stage: 'dev'
+  environment:
+    ES_HOST: 'https://search-hris-20180809-m37n6z7kpjmqlzew4zrb65fbga.us-west-2.es.amazonaws.com'
+
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -16,23 +18,19 @@ provider:
 plugins:
   - serverless-finch
   - serverless-offline
+  - serverless-apigw-binary
 
 custom:
   client:
-    bucketName: ${file(./config/config.${self:provider.stage}.json):BUCKET}
+    bucketName: 'sdfsdf'
     errorDocument: index.html
-
-package:
-  individually: true
-  exclude:
-    - ".*/**"
+  apigwBinary:
+    types:
+      - 'application/octet-stream'
 
 functions:
 
   features:
-    package:
-      include:
-        - api/**
     handler: api/handlers.features
     events:
       - http:
