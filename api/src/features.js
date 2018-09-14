@@ -17,6 +17,7 @@ function boundsToPolygon(bounds) {
 
 module.exports = (event, context, callback) => {
   let tile = event.pathParameters
+  console.log(tile)
   let bounds = merc.bbox(tile.x, tile.y, tile.z)
 
   options = {
@@ -39,7 +40,7 @@ module.exports = (event, context, callback) => {
       headers: {
         'Access-Control-Allow-Origin' : '*',
         'Access-Control-Allow-Credentials' : true,
-        'content-type': 'application/octet-stream'
+        'content-type': 'application/x-protobuf'
       },
       body: Buffer.from(pbf).toString('base64'),
       isBase64Encoded: true

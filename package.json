@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@mapbox/sphericalmercator": "^1.1.0",
+    "aws-sdk": "^2.315.0",
     "bodybuilder": "^2.2.15",
     "elasticsearch": "^15.1.1",
     "geobuf": "^3.0.1",

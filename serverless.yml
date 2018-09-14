@@ -27,6 +27,7 @@ custom:
   apigwBinary:
     types:
       - 'application/octet-stream'
+      - 'application/x-protobuf'
 
 functions:
 
@@ -34,6 +35,6 @@ functions:
     handler: api/handlers.features
     events:
       - http:
-          path: /features/{z}/{x}/{y}
+          path: /features/{z}/{x}/{y}/file.vector.pbf
           method: get
           cors: true
