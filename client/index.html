@@ -19,31 +19,35 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoiem1wZWciLCJhIjoiY2o1aWN3NW16MXZlNzMzbno0c2hyb
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v9',
-    zoom: 12,
+    zoom: 6,
     center: [-121.83571815490724, 52.047581604695345]
+    // center: [-67.13734351262877,45.137451890638886]
 });
 
 map.on('load', function() {
     // Add Mapillary sequence layer.
     // https://www.mapillary.com/developer/tiles-documentation/#sequence-layer
     map.addLayer({
-        "id": "mapillary",
-        "type": "line",
+        "id": "maine",
+        "type": "fill",
         "source": {
             "type": "vector",
-            "tiles": ["https://pfq35c9muk.execute-api.us-west-2.amazonaws.com/dev/features/{z}/{x}/{y}.vector.pbf"],
+            "tiles": ["https://pfq35c9muk.execute-api.us-west-2.amazonaws.com/dev/features/{z}/{x}/{y}/file.vector.pbf"],
+            // "tiles": ["http://localhost:3000/features/{z}/{x}/{y}/file.vector.pbf"],
             "minzoom": 6,
             "maxzoom": 14
         },
-        "source-layer": "mapillary-sequences",
+        "source-layer": "geojsonLayer",
         "layout": {
-            "line-cap": "round",
-            "line-join": "round"
+            // "line-cap": "round",
+            // "line-join": "round"
         },
         "paint": {
-            "line-opacity": 0.6,
-            "line-color": "rgb(53, 175, 109)",
-            "line-width": 2
+        	"fill-color": "#088",
+            "fill-opacity": 0.8
+            // "line-opacity": 0.6,
+            // "line-color": "rgb(53, 175, 109)",
+            // "line-width": 2
         }
     }, 'waterway-label');
 });
