@@ -19,9 +19,14 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoiem1wZWciLCJhIjoiY2o1aWN3NW16MXZlNzMzbno0c2hyb
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v9',
-    zoom: 6,
-    center: [-121.83571815490724, 52.047581604695345]
-    // center: [-67.13734351262877,45.137451890638886]
+    zoom: 12,
+    center: [-121.83571815490724, 52.047581604695345],
+    transformRequest: function (url) {
+    	return {
+    		url: url,
+            headers: {'Accept': 'application/octet-stream'} // need to specify to api-gateway of what is the acceptable response
+        }
+    }
 });
 
 map.on('load', function() {
@@ -34,7 +39,7 @@ map.on('load', function() {
             "type": "vector",
             "tiles": ["https://pfq35c9muk.execute-api.us-west-2.amazonaws.com/dev/features/{z}/{x}/{y}/file.vector.pbf"],
             // "tiles": ["http://localhost:3000/features/{z}/{x}/{y}/file.vector.pbf"],
-            "minzoom": 6,
+            "minzoom": 1,
             "maxzoom": 14
         },
         "source-layer": "geojsonLayer",
