@@ -18,16 +18,13 @@ provider:
 plugins:
   - serverless-finch
   - serverless-offline
-  - serverless-apigw-binary
 
 custom:
   client:
     bucketName: 'sdfsdf'
     errorDocument: index.html
-  apigwBinary:
-    types:
-      - 'application/octet-stream'
-      - 'application/x-protobuf'
+  serverless-offline:
+    port: 4000
 
 functions:
 
@@ -35,6 +32,6 @@ functions:
     handler: api/handlers.features
     events:
       - http:
-          path: /features/{z}/{x}/{y}/file.vector.pbf
+          path: /features/{z}/{x}/{y}
           method: get
           cors: true

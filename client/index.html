@@ -35,8 +35,10 @@ map.on('load', function() {
         "type": "fill",
         "source": {
             "type": "vector",
-            "tiles": ["https://pfq35c9muk.execute-api.us-west-2.amazonaws.com/dev/features/{z}/{x}/{y}/file.vector.pbf"],
-            // "tiles": ["http://localhost:3000/features/{z}/{x}/{y}/file.vector.pbf"],
+            "tiles": ["https://pfq35c9muk.execute-api.us-west-2.amazonaws.com/dev/features/{z}/{x}/{y}"],
+            // "tiles": ["http://localhost:4000/features/{z}/{x}/{y}"],
+            // "tiles": ["http://localhost:3000/features/knifecreek/{z}/{x}/{y}"],
+            // "tiles": ["https://agvszbpadh.execute-api.us-west-2.amazonaws.com/dev/features/knifecreek/{z}/{x}/{y}"],
             "minzoom": 1,
             "maxzoom": 14
         },
@@ -46,25 +48,6 @@ map.on('load', function() {
         	"fill-color": "#088",
             "fill-opacity": 0.8
         }
-    });
-
-    map.addLayer({
-        "id": "areas-highlighted",
-        "type": "fill",
-        "source": {
-	        "type": "vector",
-	        "tiles": ["https://pfq35c9muk.execute-api.us-west-2.amazonaws.com/dev/features/{z}/{x}/{y}/file.vector.pbf"],
-	        // "tiles": ["http://localhost:3000/features/{z}/{x}/{y}/file.vector.pbf"],
-	        "minzoom": 1,
-	        "maxzoom": 14
-        },
-        "source-layer": "geojsonLayer",
-        "layout": {},
-        "paint": {
-	        "fill-color": "#00885c",
-	        "fill-opacity": 0.8
-        },
-        "filter": ["in", "FEATURE_ID", ""]
     });
 });
 
