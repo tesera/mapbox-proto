@@ -6,7 +6,7 @@ provider:
   region: us-west-2
   stage: 'dev'
   environment:
-    ES_HOST: 'https://search-hris-20180809-m37n6z7kpjmqlzew4zrb65fbga.us-west-2.es.amazonaws.com'
+    # ES_HOST: 'https://search-hris-20180809-m37n6z7kpjmqlzew4zrb65fbga.us-west-2.es.amazonaws.com'
 
   iamRoleStatements:
     - Effect: "Allow"
@@ -28,6 +28,8 @@ custom:
     types:
       - 'application/octet-stream'
       - 'application/x-protobuf'
+  serverless-offline:
+    port: 4000
 
 functions:
 

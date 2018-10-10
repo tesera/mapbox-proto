@@ -21,7 +21,7 @@ module.exports = (event, context, callback) => {
   let bounds = merc.bbox(tile.x, tile.y, tile.z)
 
   let options = {
-    index: `dev-spatial`,
+    index: `local-spatial`,
     project: 'knifecreek',
     recordType: 'vri',
     bounds: boundsToPolygon(bounds),
