@@ -16,6 +16,7 @@ class ESModel {
 
   connect () {
     return new Promise((resolve, reject) => {
+      console.log("Connecting..", this.options)
       const client = require('elasticsearch').Client(Object.assign({}, this.options))
       return client
         .ping({ requestTimeout: this.options.requestTimeout || 3000 })
